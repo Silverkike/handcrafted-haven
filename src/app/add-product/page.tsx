@@ -9,10 +9,34 @@ export default function AddProductPage() {
     const [description, setDescription] = useState('')
     const [isSubmitted, setIsSubmitted] = useState(false)
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        setIsSubmitted(true)
-        console.log({ productName, category, price, description })
+
+        const payload = {
+            name:productName,
+            category,
+            price: Number(price),
+            description,
+            image: '/placeholder-new.jpg',
+        }
+
+        try {
+            const response = await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to submit product')
+            }
+
+            setIsSubmitted(true)
+        } catch (error) {
+            console.error('Error submitting product:', error)
+        }
     }
 
     const handleReset = () => {
