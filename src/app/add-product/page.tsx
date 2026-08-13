@@ -13,7 +13,7 @@ export default function AddProductPage() {
         event.preventDefault()
 
         const payload = {
-            name:productName,
+            name: productName,
             category,
             price: Number(price),
             description,
@@ -83,6 +83,7 @@ export default function AddProductPage() {
             >
                 {isSubmitted && (
                     <div
+                        aria-live="polite"
                         style={{
                             backgroundColor: '#D4EDDA',
                             color: '#155724',
@@ -112,6 +113,7 @@ export default function AddProductPage() {
                             id="productName"
                             type="text"
                             required
+                            aria-required="true"
                             value={productName}
                             onChange={(event) => setProductName(event.target.value)}
                             style={{
@@ -139,6 +141,7 @@ export default function AddProductPage() {
                         <select
                             id="category"
                             required
+                            aria-required="true"
                             value={category}
                             onChange={(event) => setCategory(event.target.value)}
                             style={{
@@ -174,6 +177,7 @@ export default function AddProductPage() {
                             step="0.01"
                             placeholder="0.00"
                             required
+                            aria-required="true"
                             value={price}
                             onChange={(event) => setPrice(event.target.value)}
                             style={{
@@ -202,6 +206,7 @@ export default function AddProductPage() {
                             id="description"
                             rows={4}
                             required
+                            aria-required="true"
                             value={description}
                             onChange={(event) => setDescription(event.target.value)}
                             style={{
@@ -248,6 +253,11 @@ export default function AddProductPage() {
                 </form>
             </div>
             <style jsx>{`
+        button:focus, input:focus, select:focus, textarea:focus {
+          outline: 2px solid #A65D3A;
+          outline-offset: 2px;
+        }
+
         @media (max-width: 768px) {
           main {
             padding: 1rem;

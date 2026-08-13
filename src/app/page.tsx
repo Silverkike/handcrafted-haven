@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <>
@@ -29,9 +31,14 @@ export default function Home() {
 
         .nav-link {
           color: #F7F1E8;
-          margin-right: 1.5rem;
+          margin-left: 1.5rem;
           text-decoration: none;
           font-weight: bold;
+        }
+
+        .nav-link:hover {
+          opacity: 0.8;
+          text-decoration: underline;
         }
 
         .hero-section {
@@ -115,7 +122,7 @@ export default function Home() {
           }
 
           .nav-link {
-            margin-right: 0;
+            margin-left: 0;
             margin-bottom: 0.5rem;
             display: block;
           }
@@ -176,10 +183,11 @@ export default function Home() {
         {/* Header / Navigation */}
         <header className="header">
           <h1 className="header-title">Handcrafted Haven</h1>
-          <nav>
-            <a href="#" className="nav-link">Home</a>
-            <a href="#" className="nav-link">Shop</a>
-            <a href="#" className="nav-link">About</a>
+          <nav aria-label="Main navigation">
+            <Link href="/" className="nav-link">Home</Link>
+            <Link href="/shop" className="nav-link">Shop</Link>
+            <Link href="/about" className="nav-link">About</Link>
+            <Link href="/add-product" className="nav-link">Add Product</Link>
           </nav>
         </header>
 
@@ -189,7 +197,9 @@ export default function Home() {
           <p className="hero-description">
             Discover a virtual marketplace connecting talented artisans with conscious consumers. Support local creators and sustainable consumption.
           </p>
-          <button className="cta-button">Explore Catalog</button>
+          <Link href="/shop" className="cta-button" style={{ display: 'inline-block', textDecoration: 'none' }}>
+            Explore Catalog
+          </Link>
         </section>
 
         {/* Featured Products Grid */}

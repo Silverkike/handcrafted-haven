@@ -69,6 +69,7 @@ export default function ShopPage() {
                         <button
                             key={category}
                             type="button"
+                            aria-pressed={isActive}
                             onClick={() => setSelectedCategory(category)}
                             style={{
                                 padding: '0.75rem 1.5rem',
@@ -121,6 +122,8 @@ export default function ShopPage() {
                             }}
                         >
                             <div
+                                role="img"
+                                aria-label={product.name + ' product image'}
                                 style={{
                                     width: '100%',
                                     height: '200px',
@@ -180,6 +183,11 @@ export default function ShopPage() {
                 </section>
             )}
             <style jsx>{`
+        button:focus, input:focus, select:focus, textarea:focus {
+          outline: 2px solid #A65D3A;
+          outline-offset: 2px;
+        }
+
         @media (max-width: 768px) {
           main {
             padding: 1rem;
