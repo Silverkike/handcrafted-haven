@@ -2,9 +2,64 @@
 
 import Link from 'next/link';
 
+function Header() {
+    return (
+        <header
+            style={{
+                backgroundColor: '#5C4033',
+                padding: '1.5rem 2rem',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+            }}
+        >
+            <h1
+                style={{
+                    margin: 0,
+                    fontFamily: 'Georgia, serif',
+                    color: '#F7F1E8',
+                    fontSize: '1.8rem',
+                }}
+            >
+                Handcrafted Haven
+            </h1>
+            <nav style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }} aria-label="Main navigation">
+                <Link href="/" style={{ color: '#F7F1E8', textDecoration: 'none', marginLeft: '1.5rem', fontWeight: 'bold' }}>
+                    Home
+                </Link>
+                <Link href="/shop" style={{ color: '#F7F1E8', textDecoration: 'none', marginLeft: '1.5rem', fontWeight: 'bold' }}>
+                    Shop
+                </Link>
+                <Link href="/about" style={{ color: '#F7F1E8', textDecoration: 'none', marginLeft: '1.5rem', fontWeight: 'bold' }}>
+                    About
+                </Link>
+                <Link href="/add-product" style={{ color: '#F7F1E8', textDecoration: 'none', marginLeft: '1.5rem', fontWeight: 'bold' }}>
+                    Add Product
+                </Link>
+            </nav>
+        </header>
+    );
+}
+
+function Footer() {
+    return (
+        <footer
+            style={{
+                backgroundColor: '#5C4033',
+                color: '#F7F1E8',
+                textAlign: 'center',
+                padding: '2rem',
+            }}
+        >
+            <p>© 2024 Handcrafted Haven. All rights reserved.</p>
+        </footer>
+    );
+}
+
 export default function AboutPage() {
     return (
         <>
+            <Header />
             <style jsx>{`
         .page-container {
           font-family: Arial, sans-serif;
@@ -12,28 +67,6 @@ export default function AboutPage() {
           color: #3B3A36;
           min-height: 100vh;
           margin: 0;
-        }
-
-        .header {
-          background-color: #5C4033;
-          color: #F7F1E8;
-          padding: 1.5rem 2rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .header-title {
-          margin: 0;
-          font-family: Georgia, serif;
-          color: #F7F1E8;
-          font-size: 1.8rem;
-        }
-
-        .nav {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
         }
 
         .nav-link {
@@ -116,33 +149,7 @@ export default function AboutPage() {
           line-height: 1.6;
         }
 
-        .footer {
-          background-color: #5C4033;
-          color: #F7F1E8;
-          text-align: center;
-          padding: 2rem;
-          margin-top: 4rem;
-        }
-
         @media (max-width: 768px) {
-          .header {
-            flex-direction: column;
-            padding: 1rem;
-            text-align: center;
-          }
-
-          .nav {
-            justify-content: center;
-            margin-top: 1rem;
-          }
-
-          .nav-link {
-            margin-left: 0;
-            margin-right: 1rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-          }
-
           .main-content {
             padding: 3rem 1rem;
           }
@@ -168,16 +175,6 @@ export default function AboutPage() {
       `}</style>
 
             <div className="page-container">
-                <header className="header">
-                    <h1 className="header-title">Handcrafted Haven</h1>
-                    <nav className="nav" aria-label="Main navigation">
-                        <Link href="/" className="nav-link">Home</Link>
-                        <Link href="/shop" className="nav-link">Shop</Link>
-                        <Link href="/about" className="nav-link">About</Link>
-                        <Link href="/add-product" className="nav-link">Add Product</Link>
-                    </nav>
-                </header>
-
                 <main className="main-content">
                     <h2 className="page-title">About Handcrafted Haven</h2>
 
@@ -214,11 +211,8 @@ export default function AboutPage() {
                         </div>
                     </section>
                 </main>
-
-                <footer className="footer">
-                    <p>© 2024 Handcrafted Haven. All rights reserved.</p>
-                </footer>
             </div>
+            <Footer />
         </>
     );
 }

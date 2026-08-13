@@ -70,6 +70,13 @@ export default function Home() {
           font-size: 1.1rem;
           cursor: pointer;
           font-weight: bold;
+          display: inline-block;
+          text-decoration: none;
+        }
+
+        .cta-button:hover {
+          background-color: #8B472A;
+          opacity: 0.9;
         }
 
         .featured-section {
